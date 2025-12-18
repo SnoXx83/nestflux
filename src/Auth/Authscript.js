@@ -1,3 +1,20 @@
+
+// Managing redirections if the user is already logged in
+const activeUser = localStorage.getItem('activeUser');
+
+// List of the pages
+const isGuestPage =
+    window.location.pathname.includes("HomePage.html") ||
+    window.location.pathname.includes("SigninPage.html") ||
+    window.location.pathname.includes("SignupPage.html") ||
+    window.location.pathname === "/";
+
+// Redirection
+if (activeUser && isGuestPage) {
+    window.location.href = "../src/user/Profil.html";
+}
+
+
 const signupForm = document.getElementById('signUp');
 
 if (signupForm) {
@@ -81,25 +98,25 @@ if (profileName) {
     if (activeEmail) {
         const userData = JSON.parse(localStorage.getItem(activeEmail));
         profileName.textContent = userData.firstName + "" + userData.lastName;
-    }else{
+    } else {
         // if nobody is connected , reddirect to login page
         window.location.href = "../Auth/SigninPage.html";
     }
 }
 
 
-const profileForm= document.getElementById('profileForm');
+const profileForm = document.getElementById('profileForm');
 
-if(profileForm){
+if (profileForm) {
     const activeEmail = localStorage.getItem('activeUser');
 
-    if(activeEmail){
-        const userData= JSON.parse(localStorage.getItem(activeEmail));
+    if (activeEmail) {
+        const userData = JSON.parse(localStorage.getItem(activeEmail));
 
-        document.getElementById('lastName').value =userData.lastName || "";
-        document.getElementById('firstName').value =userData.firstName || "";
-        document.getElementById('mail').value =userData.email || "";
-        document.getElementById('password').value =userData.password || "";
+        document.getElementById('lastName').value = userData.lastName || "";
+        document.getElementById('firstName').value = userData.firstName || "";
+        document.getElementById('mail').value = userData.email || "";
+        document.getElementById('password').value = userData.password || "";
 
 
     }
@@ -108,13 +125,13 @@ if(profileForm){
 
 const logoutBtn = document.getElementById('logoutBtn');
 
-if(logoutBtn){
-    logoutBtn.addEventListener('click', function(event){
+if (logoutBtn) {
+    logoutBtn.addEventListener('click', function (event) {
         event.preventDefault();
 
         localStorage.removeItem('activeUser');
 
-        window.location.href= "../Auth/SigninPage.html";
+        window.location.href = "../Auth/SigninPage.html";
     });
 }
 
