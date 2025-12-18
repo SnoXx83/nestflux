@@ -4,14 +4,18 @@ const activeUser = localStorage.getItem('activeUser');
 
 // List of the pages
 const isGuestPage =
-    window.location.pathname.includes("HomePage.html") ||
+    window.location.pathname.includes("index.html") ||
     window.location.pathname.includes("SigninPage.html") ||
     window.location.pathname.includes("SignupPage.html") ||
     window.location.pathname === "/";
 
-// Redirection
+// Redirection  
 if (activeUser && isGuestPage) {
-    window.location.href = "../src/user/Profil.html";
+    if (window.location.pathname.includes("index.html") || window.location.pathname.endsWith("/")) {
+        window.location.href = "src/user/Profil.html"; 
+    }else {
+        window.location.href = "../user/Profil.html";
+    }
 }
 
 
