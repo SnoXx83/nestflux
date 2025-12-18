@@ -4,15 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script defer src="../Auth/Authscript.js"  ></script>
+    <script defer src="../Auth/Authscript.js"></script>
     <link href="../../public/css/style.css" rel="stylesheet" />
     <title>Inscription</title>
 </head>
 
 <body class="bg-1">
     <header>
-        <div class="d-flex space-around align-center">
-            <img class="logo" src="https://help.nflxext.com/helpcenter/OneTrust/oneTrust_production_2025-12-03/consent/87b6a5c0-0104-4e96-a291-092c11350111/019ae4b5-d8b1-7864-8e94-75a86b260122/logos/dd6b162f-1a32-456a-9cfe-897231c7763c/4345ea78-053c-46d2-b11e-09adaef973dc/Netflix_Logo_PMS.png"
+        <div class="d-flex space-around align-center flex-wrap">
+            <img class="logo"
+                src="https://help.nflxext.com/helpcenter/OneTrust/oneTrust_production_2025-12-03/consent/87b6a5c0-0104-4e96-a291-092c11350111/019ae4b5-d8b1-7864-8e94-75a86b260122/logos/dd6b162f-1a32-456a-9cfe-897231c7763c/4345ea78-053c-46d2-b11e-09adaef973dc/Netflix_Logo_PMS.png"
                 alt="Logo de netflix" style="width: 15rem;">
             <div>
                 <a href="../HomePage.html" class="btn btn-primary">Retour</a>
@@ -21,20 +22,19 @@
     </header>
 
     <div class="signinForm">
-        <form id="signIn" class="d-flex flex-column text-center">
-            <h2>Connexion</h2>
+        <form id="signIn" class="d-flex flex-column ">
+            <h2 class="text-center">Connexion</h2>
             <div class="d-flex flex-column justify-center ">
-                <input type="email" id="email" placeholder="Adresse e-mail" />
-                <input type="password" id="password" placeholder="Mot de passe" />
-                <a href="#">Mot de passe oublié ?</a>
+                <input class="input" type="email" id="email" placeholder="Adresse e-mail" />
+                <input  class="input" type="password" id="password" placeholder="Mot de passe" />
+                <a class="mb-2" href="#">Mot de passe oublié ?</a>
                 <button class="btn btn-primary">Se connecter</button>
             </div>
-            <div>
-                Pas de compte ? <strong>
-                    <button type="submit" href="../Auth/SignupPage.html">S'inscrire</button>
-                </strong>
-            </div>
         </form>
+        <div class="mt-2" >
+            Pas de compte ?
+            <a type="submit" href="../Auth/SignupPage.html"> <strong>S'inscrire</strong></a>
+        </div>
     </div>
 </body>
 

@@ -11,7 +11,7 @@
 
 <body class="bg-1">
     <header>
-        <div class="d-flex space-around align-center">
+        <div class="d-flex space-around align-center flex-wrap">
             <img class="logo" src="https://help.nflxext.com/helpcenter/OneTrust/oneTrust_production_2025-12-03/consent/87b6a5c0-0104-4e96-a291-092c11350111/019ae4b5-d8b1-7864-8e94-75a86b260122/logos/dd6b162f-1a32-456a-9cfe-897231c7763c/4345ea78-053c-46d2-b11e-09adaef973dc/Netflix_Logo_PMS.png"
                 alt="Logo de netflix" style="width: 15rem;">
             <div>
@@ -23,22 +23,21 @@
     <div class="signupForm">
         <form id="signUp" class="d-flex flex-column text-center">
             <h2>Formulaire d'inscription</h2>
-            <div class="d-flex">
-                <input class="mr-1" type="text" id="lastName" placeholder="Nom" />
-                <input type="text" id="firstName" placeholder="Prénom" />
+            <div class="d-flex justify-center">
+                <input  class="input" type="text" id="lastName" placeholder="Nom" />
+                <input class="input" type="text" id="firstName" placeholder="Prénom" />
             </div>
             <div class="d-flex flex-column justify-center ">
-                <input type="email" id="mail" placeholder="Adresse e-mail" />
-                <input type="password" id="password" placeholder="Mot de passe" />
-                <input type="password" id="confirmPassword" placeholder="Confirmation du mot de passe" />
+                <input class="input" type="email" id="mail" placeholder="Adresse e-mail" />
+                <input class="input" type="password" id="password" placeholder="Mot de passe" />
+                <input class="input" type="password" id="confirmPassword" placeholder="Confirmation du mot de passe" />
                 <button type="submit" class="btn btn-primary">S'inscrire</button>
-                <div>
-                    Déjà un compte ? <strong>
-                        <a href="../Auth/SigninPage.html">Se connecter</a>
-                    </strong>
-                </div>
             </div>
         </form>
+        <div>
+            Déjà un compte ?
+                <a href="../Auth/SigninPage.html"><strong>Se connecter</strong></a>
+        </div>
     </div>
 </body>
 

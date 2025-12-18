@@ -87,6 +87,7 @@ if (profileName) {
     }
 }
 
+
 const profileForm= document.getElementById('profileForm');
 
 if(profileForm){
@@ -104,5 +105,17 @@ if(profileForm){
     }
 }
 
+
+const logoutBtn = document.getElementById('logoutBtn');
+
+if(logoutBtn){
+    logoutBtn.addEventListener('click', function(event){
+        event.preventDefault();
+
+        localStorage.removeItem('activeUser');
+
+        window.location.href= "../Auth/SigninPage.html";
+    });
+}
 
 
