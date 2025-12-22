@@ -140,3 +140,23 @@ if (logoutBtn) {
 }
 
 
+
+// Sélectionne toutes les cartes de film
+const allCards = document.querySelectorAll('.film-card');
+
+allCards.forEach(card => {
+    const vdo = card.querySelector('.trailer');
+
+    // Quand la souris entre : on joue
+    card.addEventListener('mouseenter', () => {
+        if (vdo) vdo.play().catch(error => console.log("Lecture bloquée :", error));
+    });
+
+    // Quand la souris sort : on coupe et on remet à zéro
+    card.addEventListener('mouseleave', () => {
+        if (vdo) {
+            vdo.pause();
+            vdo.currentTime = 0;
+        }
+    });
+});
