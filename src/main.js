@@ -1,7 +1,7 @@
-import { session } from './user/Session.js';
-import { handleSignUp, handleSignIn, handleLogout } from './Auth/Authscript.js';
-import { initProfile } from './user/Profile/profile.js';
-import { initMovieCards } from './Animations/Ui.js';
+import { session } from './user/session.js';
+import { handleSignUp, handleSignIn, handleLogout } from './auth/auth.js';
+import { initProfile } from './user/profile/profile.js';
+import { initMovieCards } from './animations/ui.js';
 
 
 // Security check. Check user access permissions as soon as the script loads. This prevents unauthorized users from seeing restricted pages.

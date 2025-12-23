@@ -1,6 +1,6 @@
 import bcrypt from 'bcryptjs';
 import { displayMessage } from '../Animations/Ui.js';
-import { session } from '../user/Session.js';
+import { session } from '../user/session.js';
 
 
 // Handle user registration (Sign-up)

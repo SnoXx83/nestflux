@@ -1,6 +1,6 @@
 import bcrypt from 'bcryptjs';
-import { session } from '../Session.js';
-import { displayMessage } from '../../Animations/Ui.js';
+import { session } from '../session.js';
+import { displayMessage } from '../../animations/ui.js';
 
 // Switch between view mod and edit mod
 function toggleEditMode(isEditing) {

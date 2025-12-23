@@ -7,10 +7,10 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: resolve(__dirname, 'index.html'),
-        signup: resolve(__dirname, 'src/Auth/SignupPage.html'),
-        signin: resolve(__dirname, 'src/Auth/SigninPage.html'),
-        session: resolve(__dirname, 'src/user/Session.html'),
-        profil: resolve(__dirname, 'src/user/Profile/Profile.html'),
+        signup: resolve(__dirname, 'src/auth/SignupPage.html'),
+        signin: resolve(__dirname, 'src/auth/SigninPage.html'),
+        session: resolve(__dirname, 'src/user/session.html'),
+        profil: resolve(__dirname, 'src/user/profile/profile.html'),
       },
     },
   },
