@@ -10,7 +10,7 @@ export default defineConfig({
         signup: resolve(__dirname, 'src/Auth/SignupPage.html'),
         signin: resolve(__dirname, 'src/Auth/SigninPage.html'),
         session: resolve(__dirname, 'src/user/Session.html'),
-        profil: resolve(__dirname, 'src/user/Profile.html'),
+        profil: resolve(__dirname, 'src/user/Profile/Profile.html'),
       },
     },
   },
