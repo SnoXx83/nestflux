@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script defer type="module" src="../Auth/Authscript.js"></script>
+    <script type="module" src="/src/main.js"></script>
     <link href="../../public/css/style.css" rel="stylesheet" />
     <link rel="icon" type="image/png" href="../../public/image/icone.ico">
     <title>Connexion</title>
@@ -22,21 +22,31 @@
         </div>
     </header>
 
-    <div class="signinForm">
+    <main class="signinForm">
         <form id="signIn" class="d-flex flex-column ">
             <h2 class="text-center">Connexion</h2>
             <div class="d-flex flex-column justify-center ">
-                <input class="input" type="email" id="email" placeholder="Adresse e-mail" />
-                <input  class="input" type="password" id="password" placeholder="Mot de passe" />
+                <input class="input" type="email" id="email" placeholder="Adresse e-mail" required />
+                <input class="input" type="password" id="password" placeholder="Mot de passe" required />
                 <a class="mb-2" href="#">Mot de passe oublié ?</a>
                 <button class="btn btn-primary">Se connecter</button>
+                <div id="error-message"
+                    style="color: #e50914; margin-bottom: 1rem; font-weight: bold; min-height: 1.5rem;">
+                </div>
             </div>
         </form>
-        <div class="mt-2" >
+        <div class="mt-2">
             Pas de compte ?
             <a type="submit" href="../Auth/SignupPage.html"> <strong>S'inscrire</strong></a>
         </div>
-    </div>
+    </main>
+
+    <footer class="simple-footer">
+        <div class="footer-content">
+            <p>&copy; 2025-2026 <span>Nestflux</span>. Tout droits réservés.</p>
+            <p>Créé par Maxime L</p>
+        </div>
+    </footer>
 </body>
 
 </html>

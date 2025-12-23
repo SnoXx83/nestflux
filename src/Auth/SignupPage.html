@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script defer type="module" src="../Auth/Authscript.js"  ></script>
+    <script type="module" src="/src/main.js"></script>
     <link href="../../public/css/style.css" rel="stylesheet" />
     <link rel="icon" type="image/png" href="../../public/image/icone.ico">
     <title>Inscription</title>
@@ -13,7 +13,8 @@
 <body class="bg-1">
     <header>
         <div class="d-flex space-around align-center flex-wrap">
-            <img class="logo" src="https://help.nflxext.com/helpcenter/OneTrust/oneTrust_production_2025-12-03/consent/87b6a5c0-0104-4e96-a291-092c11350111/019ae4b5-d8b1-7864-8e94-75a86b260122/logos/dd6b162f-1a32-456a-9cfe-897231c7763c/4345ea78-053c-46d2-b11e-09adaef973dc/Netflix_Logo_PMS.png"
+            <img class="logo"
+                src="https://help.nflxext.com/helpcenter/OneTrust/oneTrust_production_2025-12-03/consent/87b6a5c0-0104-4e96-a291-092c11350111/019ae4b5-d8b1-7864-8e94-75a86b260122/logos/dd6b162f-1a32-456a-9cfe-897231c7763c/4345ea78-053c-46d2-b11e-09adaef973dc/Netflix_Logo_PMS.png"
                 alt="Logo de netflix" style="width: 15rem;">
             <div>
                 <a href="../../index.html" class="btn btn-primary">Retour</a>
@@ -21,25 +22,37 @@
         </div>
     </header>
 
-    <div class="signupForm">
+    <main class="signupForm">
         <form id="signUp" class="d-flex flex-column text-center">
             <h2>Formulaire d'inscription</h2>
             <div class="d-flex justify-center">
-                <input  class="input" type="text" id="lastName" placeholder="Nom" />
-                <input class="input" type="text" id="firstName" placeholder="Prénom" />
+                <input class="input" type="text" id="lastName" placeholder="Nom" required />
+                <input class="input" type="text" id="firstName" placeholder="Prénom" required />
             </div>
             <div class="d-flex flex-column justify-center ">
-                <input class="input" type="email" id="mail" placeholder="Adresse e-mail" />
-                <input class="input" type="password" id="password" placeholder="Mot de passe" />
-                <input class="input" type="password" id="confirmPassword" placeholder="Confirmation du mot de passe" />
+                <input class="input" type="email" id="mail" placeholder="Adresse e-mail" required />
+
+                <input class="input" type="password" id="password" placeholder="Mot de passe" required minlength="8" />
+                <input class="input" type="password" id="confirmPassword" placeholder="Confirmation du mot de passe"
+                    required minlength="8" />
+
                 <button type="submit" class="btn btn-primary">S'inscrire</button>
+                <div id="error-message"
+                    style="color: #e50914; margin-bottom: 1rem; font-weight: bold; min-height: 1.5rem;"></div>
             </div>
         </form>
         <div>
             Déjà un compte ?
-                <a href="../Auth/SigninPage.html"><strong>Se connecter</strong></a>
+            <a href="../Auth/SigninPage.html"><strong>Se connecter</strong></a>
         </div>
-    </div>
+    </main>
+
+    <footer class="simple-footer">
+        <div class="footer-content">
+            <p>&copy; 2025-2026 <span>Nestflux</span>. Tout droits réservés.</p>
+            <p>Créé par Maxime L</p>
+        </div>
+    </footer>
 </body>
 
 </html>

@@ -15,7 +15,39 @@ header {
 }
 
 body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
     font-family: NetflixSans;
+}
+
+main {
+    flex: 1;
+}
+
+footer {
+    font-size: clamp(0.8rem, 2vw, 1rem); 
+    padding: 2rem 5%;
+    margin-top: auto;
+    border-top: 1px solid #333;
+    color: #737373;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.footer-content {
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    flex-wrap: wrap; 
+    gap: 0.5rem 2rem; 
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+footer span {
+    color: #e50914;
+    font-weight: bold;
 }
 
 .bg-1 {
@@ -159,9 +191,21 @@ input::placeholder {
     font-weight: bold;
 }
 
+/* Success/Error Message */
+
+#error-message{
+    text-align: center;
+    font-weight: 500;
+    min-height: 1.2em;
+    width: 100%;
+}
+
+
+
+
 .logo {
     width: 30vw;
-    min-width: 130px;
+    min-width: 100px;
     max-width: 15rem;
     max-height: 8rem;
     cursor: pointer;

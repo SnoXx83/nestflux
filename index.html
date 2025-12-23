@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script defer type="module" src="src/Auth/Authscript.js"></script>
+    <script type="module" src="/src/main.js"></script>
     <link href="public/css/style.css" rel="stylesheet" />
     <link rel="icon" type="image/png" href="public/image/icone.ico">
     <title>Page d'Accueil</title>
@@ -26,16 +26,23 @@
         </div>
     </header>
 
-    <div class="titles d-flex flex-column text-center">
+    <main class="titles d-flex flex-column text-center">
         <h1>Films et séries en illimité, et bien plus</h1>
         <h2>À partir de 7,99€. Annulable à tout moment</h2>
         <h3>Prêt à regarder Nestflux ? Saisissez votre adresse e-mail pour vous abonner ou réactiver votre abonnement.
         </h3>
-        <div class="align-center d-flex justify-center">
+        <div class="align-center d-flex justify-center flex-wrap mb-2">
             <input class="start" type="email" id="mail" placeholder="Adresse e-mail" />
             <a href="src/Auth/SignupPage.html" class="btn btn-primary">Commencer</a>
         </div>
-    </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025-2026 <span>Nestflux</span>. Tout droits réservés.</p>
+            <p>Créé par Maxime L</p>
+        </div>
+    </footer>
 </body>
 
 </html>

@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script defer type="module" src="../Auth/Authscript.js"></script>
-    <link href="../../public/css/style.css" rel="stylesheet" />
-    <link rel="icon" type="image/png" href="../../public/image/icone.ico">
+    <script type="module" src="../../main.js"></script>
+    <link href="/public/css/style.css" rel="stylesheet" />
+    <link rel="icon" type="image/png" href="/public/image/icone.ico">
     <title>Informations personelles</title>
 </head>
 
@@ -21,10 +21,10 @@
             <div class="d-flex align-center">
                 <div id="username"></div>
                 <div class="navContainer">
-                    <img class="profil-img" src="../../public/image/profil.jpg" alt="Image de profil">
+                    <img class="profil-img" src="/public/image/profil.jpg" alt="Image de profil">
                     <ul class="sub-menu">
-                        <li><a href="Profil.html">Accueil</a></li>
-                        <li><a href="../user/Config.html">Mon Profil</a></li>
+                        <li><a href="../Session.html">Accueil</a></li>
+                        <li><a href="../Profile/Profile.html">Mon Profil</a></li>
                         <li><a href="#">Paramètres</a></li>
                         <li>
                             <hr>
@@ -35,7 +35,8 @@
             </div>
         </div>
     </header>
-    <div class="updateForm">
+
+    <main class="updateForm">
         <form id="profileForm" class="d-flex flex-column text-center">
             <div>
                 <h3>Informations personelles</h3>
@@ -54,13 +55,19 @@
                 <input class="input" type="email" id="mail" placeholder="Adresse e-mail" />
                 <input class="input" type="password" id="password" placeholder="Mot de passe" />
                 <input class="input" type="password" id="confirmPassword" placeholder="Confirmation du mot de passe" />
-                <button  type="submit" class="btn btn-primary">Enregistrer les modifications</button>
+                <button type="submit" class="btn btn-primary">Enregistrer les modifications</button>
                 <button type="submit" class="btn btn-secondary">Supprimer le compte</button>
                 <div>
                 </div>
             </div>
         </form>
-    </div>
+    </main>
+    <footer class="simple-footer">
+        <div class="footer-content">
+            <p>&copy; 2025-2026 <span>Nestflux</span>. Tout droits réservés.</p>
+            <p>Créé par Maxime L</p>
+        </div>
+    </footer>
 </body>
 
 </html>

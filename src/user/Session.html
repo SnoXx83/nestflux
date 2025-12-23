@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script defer type="module" src="../Auth/Authscript.js"></script>
+    <script type="module" src="/src/main.js"></script>
     <link href="../../public/css/style.css" rel="stylesheet" />
     <link rel="icon" type="image/png" href="../../public/image/icone.ico">
     <title>Compte utilisateur</title>
@@ -24,8 +24,8 @@
                     <div class="navContainer">
                         <img class="profil-img" src="../../public/image/profil.jpg" alt="Image de profil">
                         <ul class="sub-menu">
-                            <li><a href="../user/Profil.html">Accueil</a></li>
-                            <li><a href="../user/Config.html">Mon Profil</a></li>
+                            <li><a href="../user/Session.html">Accueil</a></li>
+                            <li><a href="../user/Profile/Profile.html">Mon Profil</a></li>
                             <li><a href="#">Paramètres</a></li>
                             <li>
                                 <hr>
@@ -37,7 +37,8 @@
             </div>
         </header>
     </div>
-    <div>
+
+    <main>
         <div class="categorie">
             <h4>En ce moment</h4>
             <div class="films">
@@ -124,7 +125,14 @@
                 <img src="../../public/image/affiche-6.webp" alt="Film">
             </div>
         </div>
-    </div>
+    </main>
+
+    <footer class="simple-footer">
+        <div class="footer-content">
+            <p>&copy; 2025-2026 <span>Nestflux</span>. Tout droits réservés.</p>
+            <p>Créé par Maxime L</p>
+        </div>
+    </footer>
 </body>
 
 </html>

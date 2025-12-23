@@ -1,170 +1,73 @@
 import bcrypt from 'bcryptjs';
+import { displayMessage } from '../Animations/Ui.js';
+import { session } from '../user/Session.js';
 
 
-// Managing redirections if the user is already logged in
-const activeUser = localStorage.getItem('activeUser');
+// Handle user registration (Sign-up)
+export function handleSignUp(event) {
+    event.preventDefault();
 
-// List of the pages
-const isGuestPage =
-    window.location.pathname.includes("index.html") ||
-    window.location.pathname.includes("SigninPage.html") ||
-    window.location.pathname.includes("SignupPage.html") ||
-    window.location.pathname === "/";
+    // Collect data from the form
+    const lastName = document.getElementById('lastName').value;
+    const firstName = document.getElementById('firstName').value;
+    const email = document.getElementById('mail').value;
+    const password = document.getElementById('password').value;
+    const confirmation = document.getElementById('confirmPassword').value;
 
-// Redirection  
-if (activeUser && isGuestPage) {
-    if (window.location.pathname.includes("index.html") || window.location.pathname.endsWith("/")) {
-        window.location.href = "src/user/Profil.html";
-    } else {
-        window.location.href = "../user/Profil.html";
+    // Validation : Check if passwords match
+    if (password !== confirmation) return displayMessage("Les mots de passe ne correspondent pas.");
+    
+    // Validation: Check password strength (8 chars, 1 uppercase, 1 number)
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
+    if (!passwordRegex.test(password)) return displayMessage("Le mot de passe n'est pas assez fort.");
+
+    // Validation: Check if the user already exists in the array
+    const users = session.getUsers();
+    if (users.find(u => u.email === email)) return displayMessage("Email existe déjà.");
+
+    // Secure the password using bcrypt
+    const salt = bcrypt.genSaltSync(10);
+    const newUser = {
+        lastName, firstName, email,
+        password: bcrypt.hashSync(password, salt)
+    };
+
+    // Save the new user to the global users array in localStorage
+    users.push(newUser);
+    localStorage.setItem('users', JSON.stringify(users));
+
+    // Show success message and redirect to login page
+    displayMessage("L'inscription est un succès. Redirection...", "success");
+    setTimeout(() => window.location.href = "../Auth/SigninPage.html", 1500);
+}
+
+// Handle user login (Sign-in)
+export function handleSignIn(event) {
+    
+    event.preventDefault();
+    // Collect credentials
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+
+    // Search for the user in the database (localStorage)
+    const user = session.getUsers().find(user => user.email === email);
+
+    // Validation : Check if user exists and if the password matches the hash
+    if (!user || !bcrypt.compareSync(password, user.password)) {
+        return displayMessage("L'email ou le mot de passe sont invalide.");
     }
+
+    // Success: Store the email in session (activeUser)
+    localStorage.setItem('activeUser', email);
+    displayMessage("Connexion réussi !", "success");
+
+    // Redirect to the profile page
+    setTimeout(() => window.location.href = "../user/Session.html", 1000);
 }
 
-
-const signupForm = document.getElementById('signUp');
-
-if (signupForm) {
-
-    // Function submit on signUpForm 
-    signupForm.addEventListener('submit', function (event) {
-
-        // The page is not redirect
-        event.preventDefault();
-
-        // Get all datas we need on Sign-Up Page
-        const lastName = document.getElementById('lastName').value;
-        const firstName = document.getElementById('firstName').value;
-        const email = document.getElementById('mail').value;
-        const password = document.getElementById('password').value;
-        const confirmationPassword = document.getElementById('confirmPassword').value;
-
-        // Error handling
-        if (password !== confirmationPassword) {
-            alert("Les mots de passe ne sont pas identiques !");
-            return;
-        }
-
-        // Creating the salt
-        const salt = bcrypt.genSaltSync(10);
-        // hashing password with salt
-        const hashedPassword = bcrypt.hashSync(password, salt);
-
-        // save datas in user Object
-        const user = {
-            lastName: lastName,
-            firstName: firstName,
-            email: email,
-            password: hashedPassword,
-        };
-
-        // Save user Object in the localStorage with a unique key => email
-        localStorage.setItem(email, JSON.stringify(user));
-
-        // Redirect in Sign-in Page
-        window.location.href = "../Auth/SigninPage.html";
-    });
+// Handle user logout
+export function handleLogout() {
+    // Clear the active session and redirect to sign-in page
+    localStorage.removeItem('activeUser');
+    window.location.href = "../Auth/SigninPage.html";
 }
-
-
-const signInForm = document.getElementById('signIn');
-
-if (signInForm) {
-    // Function submit on SignInForm
-    signInForm.addEventListener('submit', function (event) {
-
-        event.preventDefault();
-
-        // Get all datas we need on Sign-In Page
-        const email = document.getElementById('email').value;
-        const password = document.getElementById('password').value;
-
-        // Get the key with email
-        const storedDatas = localStorage.getItem(email);
-
-        if (!storedDatas) {
-            alert("l'email de correspond pas !");
-            return;
-        }
-
-        // Transform the datas in JSON for get the password
-        const userObject = JSON.parse(storedDatas);
-
-        // The password is compared 
-        const isPasswordCorrect = bcrypt.compareSync(password, userObject.password);
-
-        if (!isPasswordCorrect) {
-            alert("Le mot de passe ne correspond pas !");
-        } else {
-            localStorage.setItem('activeUser', email);
-            
-            window.location.href = "../user/Profil.html";
-        }
-    })
-}
-
-const profileName = document.getElementById('username');
-
-if (profileName) {
-    const activeEmail = localStorage.getItem('activeUser');
-
-    if (activeEmail) {
-        const userData = JSON.parse(localStorage.getItem(activeEmail));
-        profileName.textContent = userData.firstName + " " + userData.lastName;
-    } else {
-        // if nobody is connected , reddirect to login page
-        window.location.href = "../Auth/SigninPage.html";
-    }
-}
-
-
-const profileForm = document.getElementById('profileForm');
-
-if (profileForm) {
-    const activeEmail = localStorage.getItem('activeUser');
-
-    if (activeEmail) {
-        const userData = JSON.parse(localStorage.getItem(activeEmail));
-
-        document.getElementById('lastName').value = userData.lastName || "";
-        document.getElementById('firstName').value = userData.firstName || "";
-        document.getElementById('mail').value = userData.email || "";
-        document.getElementById('password').value = userData.password || "";
-
-
-    }
-}
-
-
-const logoutBtn = document.getElementById('logoutBtn');
-
-if (logoutBtn) {
-    logoutBtn.addEventListener('click', function (event) {
-        event.preventDefault();
-
-        localStorage.removeItem('activeUser');
-
-        window.location.href = "../Auth/SigninPage.html";
-    });
-}
-
-
-
-// Sélectionne toutes les cartes de film
-const allCards = document.querySelectorAll('.film-card');
-
-allCards.forEach(card => {
-    const vdo = card.querySelector('.trailer');
-
-    // Quand la souris entre : on joue
-    card.addEventListener('mouseenter', () => {
-        if (vdo) vdo.play().catch(error => console.log("Lecture bloquée :", error));
-    });
-
-    // Quand la souris sort : on coupe et on remet à zéro
-    card.addEventListener('mouseleave', () => {
-        if (vdo) {
-            vdo.pause();
-            vdo.currentTime = 0;
-        }
-    });
-});
